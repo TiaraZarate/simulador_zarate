@@ -46,10 +46,20 @@ while (cantProductos >= 0) {
     }
 }
 //Muestra la cantidad de productos asquiridos en la consola
-console.log('Has comprado: ' + pizza + ' cantidad de esparragos.')
-console.log('Has comprado: ' + empanada + ' cantidad de brocolis.')
-console.log('Has comprado: ' + tarta + ' cantidad de espinacas.')
-console.log('Has comprado: ' + milanesa + ' cantidad de zanahorias.');
+if(pizza !=0){
+    console.log('Has comprado: ' + pizza + ' cantidad de esparragos.');
+}
+if(empanada !=0){
+    console.log('Has comprado: ' + empanada + ' cantidad de brocolis.');
+}
+if(tarta !=0){
+    console.log('Has comprado: ' + tarta + ' cantidad de espinacas.')
+}
+if(melanesa != 0){
+    console.log('Has comprado: ' + milanesa + ' cantidad de zanahorias.');
+}
+
+
 console.log('En total has adquirido ' + cantProductos + ' cantidad de productos.')
 
 totalproductos = ((pizza * 800)+ (empanada * 1200) + (tarta * 900) + (milanesa * 1000));
