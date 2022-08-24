@@ -55,7 +55,7 @@ if(empanada !=0){
 if(tarta !=0){
     console.log('Has comprado: ' + tarta + ' cantidad de espinacas.')
 }
-if(melanesa != 0){
+if(milanesa != 0){
     console.log('Has comprado: ' + milanesa + ' cantidad de zanahorias.');
 }
 
