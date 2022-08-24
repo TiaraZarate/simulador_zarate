@@ -47,16 +47,16 @@ while (cantProductos >= 0) {
 }
 //Muestra la cantidad de productos asquiridos en la consola
 if(pizza !=0){
-    console.log('Has comprado: ' + pizza + ' cantidad de esparragos.');
+    console.log('Has comprado: ' + pizza + ' cantidad de pizza.');
 }
 if(empanada !=0){
-    console.log('Has comprado: ' + empanada + ' cantidad de brocolis.');
+    console.log('Has comprado: ' + empanada + ' cantidad de empanadas.');
 }
 if(tarta !=0){
-    console.log('Has comprado: ' + tarta + ' cantidad de espinacas.')
+    console.log('Has comprado: ' + tarta + ' cantidad de tarta.')
 }
 if(milanesa != 0){
-    console.log('Has comprado: ' + milanesa + ' cantidad de zanahorias.');
+    console.log('Has comprado: ' + milanesa + ' cantidad de milanesa.');
 }
 
 
