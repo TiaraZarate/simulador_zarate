@@ -81,22 +81,23 @@ function medios_de_pago(){
 
         if(pago == 3){
             let pago_en_3_cuotas = totalproductos * 0.15;
-            return "El precio final son 3 cuotas de $ " + pago_en_3_cuotas + " .Disfrute su compra."
+            return "El precio final es "+ totalproductos + " Serian  3 cuotas de $ " + pago_en_3_cuotas + " .Disfrute su compra."
         }
         if(pago == 6){
             let pago_en_6_cuotas = totalproductos * 0.20;
-            return "El precio final son 6 cuotas de $ " + pago_en_6_cuotas + " .Disfrute su compra."
+            return "El precio final es "+ totalproductos +  " Serian  6 cuotas de $ " + pago_en_6_cuotas + " .Disfrute su compra."
         }
         if(pago == 9){
             let pago_en_9_cuotas = totalproductos * 0.25;
-            return "El precio final son 9 cuotas de $  " + pago_en_9_cuotas + " .Disfrute su compra."
+            return "El precio final es "+ totalproductos + " Serian 9 cuotas de $  " + pago_en_9_cuotas + " .Disfrute su compra."
         }
         if(pago == 12){
             let pago_en_12_cuotas = totalproductos * 0.30;
-            return "El precio final son 12 cuotas de $  " + pago_en_12_cuotas + " .Disfrute su compra."
+            return "El precio final es "+ totalproductos + " Serian 12 cuotas de $  " + pago_en_12_cuotas + " .Disfrute su compra."
         }
-        else{
-            return "Debe ingresar una opcion validad (efectivo o numero de cuotas 3/6/9/12)"
+        else if (pago =! "efectivo"|| "tarjeta"){ 
+            pago = prompt("desea abonar en efectivo (10% DE DESCUENTO) o tarjeta");
+            return "Debe ingresar una opcion valida (efectivo o numero de cuotas 3/6/9/12)"
         }
 }
 }
