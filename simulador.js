@@ -1,104 +1,77 @@
-let cantProductos = 0;
-// Array
-let producto = [0, 0, 0, 0]
-let pizza = producto[0]
-let empanada =  producto[1]
-let tarta = producto[2]
-let milanesa = producto[3]
-let totalproductos = 0
+alert("BUEN DIA! mas abajo esta su carrito :)")
 
 
+let carrito = [];
 
-//while . ciclo para ir sumando productos. que se repite mientras el usuario ingrese si y se corta cuando el usuario ingrese no/ESC
-while (cantProductos >= 0) {
-    if (prompt('Desea agregar productos si/no/ESC') == 'si'){
-          producto = prompt("VENTA DE PRODUCTOS CONGELADOS: \n Ofrecemos: \n \t 1-PIZZA, \n \t 2-EMPANADA, \n \t 3-TARTA, \n \t 4-MILANESA. \n Ingrese el NUMERO del producto que desea. Para finalizar, escriba ESC.");
+let btn_compra = document.querySelectorAll(".botonCompra");
+console.log( btn_compra);
 
-        if (producto == 1){
-            pizza++
+for( let boton of btn_compra){
 
-            cantProductos++
-        };
-        if (producto == 2){
-            empanada++
+    boton.addEventListener("click" , agregar_a_carrito);
+}
 
-            cantProductos++
+//agregar al carrito
+function agregar_a_carrito(e){
 
-        };
-        if (producto == 3){
-            tarta++
+    console.log("EL EVENTO ESTA EN:" , e.target);
 
-            cantProductos++
 
-        };
-        if (producto == 4){
-            milanesa++
+    let hijo = e.target;
+    let padre = hijo.parentNode;
+    let abuelo = padre.parentNode;
+    //console.log(padre);
+    //console.log(abuelo);
 
-            cantProductos++
 
-        };
+    let nombre_producto = padre.querySelector("h5").textContent;
+    let precio = padre.querySelector("span").textContent;
+    //console.log(nombre_producto);
+    //console.log(precio);
 
-        if (producto == 'ESC'){
-            break;
-        }
-    } else {
-        break;
+    let producto = {
+        nombre:nombre_producto,
+        precio: precio,
+        cantidad:1
+    };
+
+
+    carrito.push(producto);
+
+    let arreglo_JSON = JSON.stringify(carrito);
+    localStorage.setItem("carrito" , arreglo_JSON);
+
+    console.log( carrito);
+    
+    mostrar_carrito( producto );
+}
+
+
+//carrito
+function mostrar_carrito( producto){
+
+    let fila = document.createElement("tr");
+
+     fila.innerHTML = `<td>${producto.nombre}</td>
+                       <td>${producto.cantidad}</td>
+                       <td>${producto.precio}</td>
+                       <td><button class="btn-danger borrar_elemento">Borrar</button></td>`;
+
+    let tabla = document.getElementById("tbody");
+    tabla.append(fila);
+
+
+    let botones_borrar = document.querySelectorAll(".borrar_elemento");
+
+    for( let boton of botones_borrar){
+
+        boton.addEventListener("click" , borrar_producto);
     }
-}
-//Muestra la cantidad de productos asquiridos en la consola
-if(pizza !=0){
-    console.log('Has comprado: ' + pizza + ' cantidad de pizza.');
-}
-if(empanada !=0){
-    console.log('Has comprado: ' + empanada + ' cantidad de empanadas.');
-}
-if(tarta !=0){
-    console.log('Has comprado: ' + tarta + ' cantidad de tarta.')
-}
-if(milanesa != 0){
-    console.log('Has comprado: ' + milanesa + ' cantidad de milanesa.');
-}
 
-
-console.log('En total has adquirido ' + cantProductos + ' cantidad de productos.')
-
-totalproductos = ((pizza * 800)+ (empanada * 1200) + (tarta * 900) + (milanesa * 1000));
-
-//Funcion para calcular el pago en cuotas o en efectivo
-function medios_de_pago(){
-    let pago;
-
-        if (cantProductos > 0){
-        pago = prompt("desea abonar en efectivo (10% DE DESCUENTO) o tarjeta");
-        
-        if (pago == "efectivo"){
-        return "el total a abonar EN EFECTIVO, con el 10% de descuento realizado es: $" + (totalproductos*0.9 );
-        }
-
-        if (pago == "tarjeta"){
-            pago = prompt("en cuantas cuotas queres pagar 3/6/9/12?");
-        }
-
-        if(pago == 3){
-            let pago_en_3_cuotas = totalproductos * 0.15;
-            return "El precio final es "+ totalproductos + " Serian  3 cuotas de $ " + pago_en_3_cuotas + " .Disfrute su compra."
-        }
-        if(pago == 6){
-            let pago_en_6_cuotas = totalproductos * 0.20;
-            return "El precio final es "+ totalproductos +  " Serian  6 cuotas de $ " + pago_en_6_cuotas + " .Disfrute su compra."
-        }
-        if(pago == 9){
-            let pago_en_9_cuotas = totalproductos * 0.25;
-            return "El precio final es "+ totalproductos + " Serian 9 cuotas de $  " + pago_en_9_cuotas + " .Disfrute su compra."
-        }
-        if(pago == 12){
-            let pago_en_12_cuotas = totalproductos * 0.30;
-            return "El precio final es "+ totalproductos + " Serian 12 cuotas de $  " + pago_en_12_cuotas + " .Disfrute su compra."
-        }
-        else if (pago =! "efectivo"|| "tarjeta"){ 
-            pago = prompt("desea abonar en efectivo (10% DE DESCUENTO) o tarjeta");
-            return "Debe ingresar una opcion valida (efectivo o numero de cuotas 3/6/9/12)"
-        }
 }
+//borrar algo en el carrito
+function borrar_producto(e){
+
+    let abuelo = e.target.parentNode.parentNode;
+    abuelo.remove();
 }
-console.log(medios_de_pago());

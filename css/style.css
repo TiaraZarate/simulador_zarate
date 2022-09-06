@@ -32,3 +32,10 @@ h1{
     color: beige;
     
 }
+
+.container h2{
+    text-decoration: overline;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
